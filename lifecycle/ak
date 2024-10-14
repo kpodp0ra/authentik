@@ -90,6 +90,9 @@ elif [[ "$1" == "healthcheck" ]]; then
     run_authentik healthcheck $(cat $MODE_FILE)
 elif [[ "$1" == "dump_config" ]]; then
     exec python -m authentik.lib.config
+elif [[ "$1" == "support" ]]; then
+    wait_for_db
+    exec python -m lifecycle.support
 elif [[ "$1" == "debug" ]]; then
     exec sleep infinity
 else
